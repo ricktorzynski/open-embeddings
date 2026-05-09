@@ -4,10 +4,10 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 install: ## Install the package
-	pip install .
+	uv sync --no-dev
 
 dev-install: ## Install package in development mode with dev dependencies
-	pip install -e ".[dev]"
+	uv sync
 
 test: ## Run tests
 	pytest tests/ -v
@@ -16,7 +16,7 @@ test-coverage: ## Run tests with coverage report
 	pytest tests/ -v --cov=open_embeddings --cov-report=html --cov-report=term
 
 run: ## Run the development server
-	python -m open_embeddings.main
+	uv run python -m open_embeddings.main
 
 docker-build: ## Build Docker image
 	docker build -t open-embeddings .
@@ -50,7 +50,7 @@ check-format: ## Check code formatting
 	isort --check-only open_embeddings/ tests/
 
 example: ## Run the client example
-	python examples/client_example.py
+	uv run python examples/client_example.py
 
 # Development helpers
 dev-setup: dev-install ## Setup development environment

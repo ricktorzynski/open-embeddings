@@ -25,10 +25,10 @@ Most embedding services are bundled with LLM APIs (OpenAI, Anthropic) or mixed-p
 
 ```bash
 # Install dependencies
-pip install -r requirements.txt
+uv sync
 
 # Run the server
-python -m open_embeddings
+uv run python -m open_embeddings
 
 # Test with curl
 curl -X POST http://localhost:8765/embed \

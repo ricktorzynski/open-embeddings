@@ -38,14 +38,14 @@ def main():
     print("=== Open Embeddings Setup ===")
 
     # Install dependencies
-    if not run_command("pip install -e ."):
+    if not run_command("uv sync"):
         print("Failed to install dependencies")
         sys.exit(1)
 
     # Start server in background
     print("\nStarting server...")
     server_process = subprocess.Popen([
-        sys.executable, "-m", "open_embeddings.main"
+        "uv", "run", "python", "-m", "open_embeddings.main"
     ])
 
     try:
