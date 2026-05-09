@@ -170,13 +170,33 @@ def get_available_models() -> List[str]:
     """
     Get list of commonly available sentence-transformers models.
 
+    Includes popular model families:
+    - MiniLM: Fast and efficient models
+    - BGE: High-quality BAAI General Embedding models
+    - GTE: General Text Embedding models
+    - MPNet: Microsoft's high-performance model
+
     Returns:
         List of model names
     """
     return [
-        "all-MiniLM-L6-v2",      # 384 dim, good balance
-        "all-MiniLM-L12-v2",     # 384 dim, better quality
-        "all-mpnet-base-v2",     # 768 dim, high quality
-        "multi-qa-MiniLM-L6-cos-v1",  # 384 dim, good for Q&A
+        # MiniLM family - fast and efficient
+        "all-MiniLM-L6-v2",           # 384 dim, good balance
+        "all-MiniLM-L12-v2",          # 384 dim, better quality
         "paraphrase-MiniLM-L6-v2",    # 384 dim, good for paraphrases
+        "multi-qa-MiniLM-L6-cos-v1",  # 384 dim, good for Q&A
+
+        # BGE family - high quality BAAI models
+        "BAAI/bge-small-en-v1.5",     # 384 dim, excellent small model
+        "BAAI/bge-base-en-v1.5",      # 768 dim, strong performance
+        "BAAI/bge-large-en-v1.5",     # 1024 dim, top performance
+        "BAAI/bge-m3",                 # 1024 dim, multilingual
+
+        # GTE family - general text embedding models
+        "thenlper/gte-small",          # 384 dim, efficient
+        "thenlper/gte-base",           # 768 dim, balanced
+        "thenlper/gte-large",          # 1024 dim, high quality
+
+        # MPNet family - Microsoft's model
+        "all-mpnet-base-v2",           # 768 dim, high quality
     ]
