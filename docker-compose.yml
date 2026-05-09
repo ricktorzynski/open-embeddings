@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  open-embeddings:
+    build: .
+    ports:
+      - "8765:8765"
+    environment:
+      - EMBEDDING_HOST=0.0.0.0
+      - EMBEDDING_PORT=8765
+      - DEFAULT_MODEL=all-MiniLM-L6-v2
+      - MAX_BATCH_SIZE=100
+      - LOG_LEVEL=INFO
+    volumes:
+      # Cache downloaded models
+      - model_cache:/home/embedding/.cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8765/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  model_cache:
