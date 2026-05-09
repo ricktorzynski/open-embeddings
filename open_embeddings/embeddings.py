@@ -174,6 +174,7 @@ def get_available_models() -> List[str]:
     - MiniLM: Fast and efficient models
     - BGE: High-quality BAAI General Embedding models
     - GTE: General Text Embedding models
+    - Qwen: Alibaba's high-performance embedding models
     - MPNet: Microsoft's high-performance model
 
     Returns:
@@ -196,6 +197,11 @@ def get_available_models() -> List[str]:
         "thenlper/gte-small",          # 384 dim, efficient
         "thenlper/gte-base",           # 768 dim, balanced
         "thenlper/gte-large",          # 1024 dim, high quality
+
+        # Qwen family - Alibaba's embedding models
+        "Alibaba-NLP/gte-Qwen2-1.5B-instruct",  # 1536 dim, instruction-tuned
+        "Alibaba-NLP/gte-Qwen2-7B-instruct",    # 3584 dim, large model
+        "jinaai/jina-embeddings-v2-base-en",     # 768 dim, Jina AI (good alternative)
 
         # MPNet family - Microsoft's model
         "all-mpnet-base-v2",           # 768 dim, high quality
